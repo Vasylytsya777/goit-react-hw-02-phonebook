@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 import ContactForm from "./contactForm/ContactForm";
 import ContactList from "./contactList/ContactList";
+// import Filter from "./filter/Filter";
 // // import Section from "./section/Sections";
 
 export default class App extends Component {
@@ -26,21 +27,30 @@ export default class App extends Component {
       contacts: [...this.state.contacts.filter((item) => item.id !== id)],
     });
   };
+  //   onChangeFilter = (e) => {
+  //      this.setState((prev) => ({filter
+  //      }));
 
+  // getFilerContact = (e) => {
+  //     this.setState({
+  //         contacts: [...contacts.filter((item) => item.newContact.includes(filter))],
+  //       })
+  //     };
   //
   render() {
     return (
       <>
         <h1>Phonebook</h1>
-
         <ContactForm addContact={this.addContact} />
+        {/* <Filter
+          filter={this.state.filter}
+          onChangeFilter={this.onChangeFilter} */}
+
         <h2>Contacts</h2>
         <ContactList
           list={this.state.contacts}
           deleteContact={this.deleteContact}
         />
-
-        {/* <Filter ... /> */}
       </>
     );
   }

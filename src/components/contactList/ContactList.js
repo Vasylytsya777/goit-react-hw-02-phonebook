@@ -7,7 +7,7 @@ const ContactList = ({ list, deleteContact }) => {
       <ul>
         {list.map((item) => (
           <li key={item.id}>
-            <p> {item.name}</p>
+            <h3> {item.name}</h3>
             <p>{item.number}</p>
             <button type="submit" data-id={item.id} onClick={deleteContact}>
               Delete
