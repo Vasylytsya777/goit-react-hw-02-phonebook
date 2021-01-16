@@ -1,13 +1,13 @@
 import React from "react";
 
-const ContactList = ({ newContact, deleteContact }) => {
+const ContactList = ({ contacts, deleteContact }) => {
   return (
     <ul>
-      {newContact.map((item) => (
+      {contacts.map((item) => (
         <li key={item.id}>
           <h3> {item.name}</h3>
           <p>{item.number}</p>
-          <button data-id={item.id} onClick={deleteContact}>
+          <button type="button" data-id={item.id} onClick={deleteContact}>
             Delete
           </button>
         </li>

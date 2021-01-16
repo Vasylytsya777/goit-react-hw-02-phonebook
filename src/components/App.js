@@ -15,11 +15,25 @@ export default class App extends Component {
     filter: "",
   };
 
-  addContact = (newContact) => {
-    this.setState((prev) => ({
-      contacts: [...prev.contacts, { id: uuidv4(), ...newContact }],
-    }));
+  addContact = (newContacts) => {
+    const contact = {
+      id: uuidv4(),
+      name: newContacts.name,
+      number: newContacts.number,
+    };
+
+    this.setState((prevState) => {
+      return prevState.contacts.find(
+        (contact) =>
+          contact.name.toLowerCase() === newContacts.name.toLowerCase()
+      )
+        ? alert(`${newContacts.name} is already in contacts.`)
+        : {
+            contacts: [...prevState.contacts, contact],
+          };
+    });
   };
+
   deleteContact = (e) => {
     const id = e.target.dataset.id;
     this.setState({
@@ -32,26 +46,28 @@ export default class App extends Component {
   };
 
   getFilteredContact = () => {
+    const { contacts, filter } = this.state;
     return [
-      ...this.state.contacts.filter((item) =>
-        item.newContact.toLowerCase().includes(this.state.filter.toLowerCase())
+      contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(filter.toLowerCase())
       ),
     ];
   };
 
   render() {
+    const { filter } = this.state;
+    // const getFilteredContact = this.getFilteredContact();
     return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm addContact={this.addContact} />
         <h2>Contacts</h2>
-        <h3>Find contacts by name</h3>
-        <Filter
-          filter={this.state.filter}
-          onHandleFilter={this.onHandleFilter}
-        />
+
+        <Filter filter={filter} onHandleFilter={this.onHandleFilter} />
+
         <ContactList
-          newContact={this.state.contacts} // помилка!!!
+          // contacts={getFilteredContact} // помилка!!!
+          contacts={this.state.contacts}
           deleteContact={this.deleteContact}
         />
       </div>
