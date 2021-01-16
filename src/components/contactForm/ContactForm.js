@@ -1,28 +1,56 @@
-// import React from "react";
+import React, { Component } from "react";
 // import PropTypes from "prop-types";
-// import { v4 as uuidv4 } from "uuid";
 
-// const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-//   return (
-//     <>
-//       {Object.keys(options).map((item) => (
-//         <Button
-//           className="feedback-btn"
-//           onClick={onLeaveFeedback}
-//           type="button"
-//           key={uuidv4()}
-//           data-name={item}
-//         >
-//           {item[0].toUpperCase() + item.slice(1)}
-//         </Button>
-//       ))}
-//     </>
-//   );
-// };
+export default class ContactForm extends Component {
+  state = {
+    name: "",
+    number: "",
+  };
 
-// export default FeedbackOptions;
+  onHandleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+    // console.log("value", value);
+    // console.log("name", name);
+  };
 
-// FeedbackOptions.propTypes = {
-//   options: PropTypes.object.isRequired,
-//   onLeaveFeedback: PropTypes.func.isRequired,
-// };
+  onHandleSubmit = (e) => {
+    e.preventDefault();
+    this.props.addContact({
+      name: this.state.name,
+      number: this.state.number,
+    });
+    this.setState({ name: "", number: "" }); //як висипати стейт по іншому
+  };
+
+  render() {
+    const { name, number } = this.state;
+    return (
+      <form onSubmit={this.onHandleSubmit}>
+        <label>
+          Name
+          <input
+            type="text"
+            placeholder="Enter Name"
+            value={name}
+            name="name"
+            onChange={this.onHandleChange}
+          />
+        </label>
+        <label>
+          {/* <label key={uuidv4()}> */}
+          Number
+          <input
+            type="text"
+            placeholder="Enter number"
+            value={number}
+            name="number"
+            onChange={this.onHandleChange}
+          />
+        </label>
+
+        <button type="submit">Add contact {name}</button>
+      </form>
+    );
+  }
+}

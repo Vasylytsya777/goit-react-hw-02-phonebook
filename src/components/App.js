@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
+import ContactForm from "./contactForm/ContactForm";
 // // import Section from "./section/Sections";
 
 export default class App extends Component {
@@ -12,68 +13,21 @@ export default class App extends Component {
     ],
     filter: "",
     name: "",
-    number: "",
-  };
-  handleChange = ({ target }) => {
-    const { name, value } = target;
-
-    this.setState({ [name]: value });
   };
 
-  handleSubmit = (evt) => {
-    const { login, number, name } = this.state;
-    evt.preventDefault();
-    this.props.onSubmit({ ...this.state });
-    // reset = () => {
-    //   this.setState({ ...state });
-    //   this.reset();
-    // };
+  addContact = (newContact) => {
+    this.setState((prev) => ({
+      contacts: [...prev.contacts, { id: uuidv4(), ...newContact }],
+    }));
   };
-
-  //   console.log(`
-  //     Login: ${login}
-  //     Email: ${number}
-  //     Password: ${name}
-  //   `);
-
-  // };
-
-  // reset = () => {
-  //   this.setState({ ...INITIAL_STATE });
-  // };
 
   render() {
-    const { login, number, name } = this.state;
-
     return (
       <>
         <h1>Phonebook</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label key={uuidv4()}>
-            Name
-            <input
-              type="text"
-              placeholder="Enter Name"
-              name="name"
-              value={name}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label key={uuidv4()}>
-            Number
-            <input
-              type="text"
-              placeholder="Enter number"
-              name="number"
-              value={number}
-              onChange={this.handleChange}
-            />
-          </label>
 
-          <button type="submit">Add contact{login}</button>
-        </form>
         <h2>Contacts</h2>
-        {/* <ContactForm ... /> */}
+        <ContactForm addContact={this.addContact} />
         {/* <h2>Contacts</h2> */}
         {/* <Filter ... />
   <ContactList ... /> */}
