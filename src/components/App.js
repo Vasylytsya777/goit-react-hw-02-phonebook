@@ -21,19 +21,22 @@ export default class App extends Component {
   };
 
   handleSubmit = (evt) => {
-    evt.preventDefault();
-
     const { login, number, name } = this.state;
-
-    console.log(`
-      Login: ${login}
-      Email: ${number}
-      Password: ${name}
-    `);
-
+    evt.preventDefault();
     this.props.onSubmit({ ...this.state });
-    // this.reset();
+    // reset = () => {
+    //   this.setState({ ...state });
+    //   this.reset();
+    // };
   };
+
+  //   console.log(`
+  //     Login: ${login}
+  //     Email: ${number}
+  //     Password: ${name}
+  //   `);
+
+  // };
 
   // reset = () => {
   //   this.setState({ ...INITIAL_STATE });
