@@ -8,8 +8,8 @@ export default class ContactForm extends Component {
   };
 
   onHandleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+    const name = e.target.name;
+    this.setState({ [name]: e.target.value });
     // console.log("value", value);
     // console.log("name", name);
   };
@@ -24,7 +24,6 @@ export default class ContactForm extends Component {
   };
 
   render() {
-    const { name, number } = this.state;
     return (
       <form onSubmit={this.onHandleSubmit} style={{ display: "flex" }}>
         <label>
@@ -32,24 +31,22 @@ export default class ContactForm extends Component {
           <input
             type="text"
             placeholder="Enter Name"
-            value={name}
+            value={this.state.name}
             name="name"
             onChange={this.onHandleChange}
           />
-        </label>
-        <label>
           {/* <label key={uuidv4()}> */}
           Number
           <input
             type="text"
             placeholder="Enter number"
-            value={number}
+            value={this.state.number}
             name="number"
             onChange={this.onHandleChange}
           />
         </label>
 
-        <button type="submit">Add contact {name}</button>
+        <button type="submit">Add contact</button>
       </form>
     );
   }

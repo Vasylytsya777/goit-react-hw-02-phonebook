@@ -1,11 +1,7 @@
 import React from "react";
 
-const Filter = (filter, onChangeFilter) => {
-  return (
-    <input type="text" value={filter} onChange={onChangeFilter}>
-      {" "}
-    </input>
-  );
+const Filter = ({ filter, onHandleFilter }) => {
+  return <input type="text" value={filter} onChange={onHandleFilter} />;
 };
 
 export default Filter;
