@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import styles from "./ContactForm.module.css";
 
 export default class ContactForm extends Component {
   state = {
@@ -29,10 +29,15 @@ export default class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.onHandleSubmit} style={{ display: "flex" }}>
-        <label>
+      <form
+        className={styles.form}
+        onSubmit={this.onHandleSubmit}
+        style={{ display: "flex" }}
+      >
+        <label className={styles.label}>
           Name
           <input
+            className={styles.inputName}
             type="text"
             placeholder="Enter Name"
             value={name}
@@ -41,18 +46,21 @@ export default class ContactForm extends Component {
           />
           {/* <label key={uuidv4()}> */}
         </label>
-        <label>
+        <label className={styles.label}>
           Number
           <input
+            className={styles.inputNumber}
             type="text"
-            placeholder="Enter number"
+            placeholder="xxx-xx-xx"
             value={number}
             name="number"
             onChange={this.onHandleChange}
           />
         </label>
 
-        <button type="submit">Add contact</button>
+        <button className={styles.buttonAddContacts} type="submit">
+          Add contact
+        </button>
       </form>
     );
   }

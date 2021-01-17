@@ -1,0 +1,21 @@
+.listItem {
+  margin-bottom: 10px;
+}
+.contactText {
+  display: inline-block;
+  margin-right: 50px;
+  font-size: 20px;
+}
+.deleteButton {
+  width: 100px;
+  height: 30px;
+
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: green;
+}
+.deleteButton:hover,
+.deleteButton:focus {
+  background-color: red;
+}
