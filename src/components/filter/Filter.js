@@ -1,6 +1,9 @@
 import React from "react";
 
 const Filter = ({ filter, onHandleFilter }) => {
+  const onFilterChange = (e) => {
+    onHandleFilter(e.target.value);
+  };
   return (
     <>
       <h3>Find contacts by name</h3>
@@ -8,7 +11,7 @@ const Filter = ({ filter, onHandleFilter }) => {
         type="text"
         name="filter"
         value={filter}
-        onChange={onHandleFilter}
+        onChange={onFilterChange}
       ></input>
     </>
   );

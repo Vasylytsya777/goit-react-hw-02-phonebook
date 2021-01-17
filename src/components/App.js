@@ -41,22 +41,25 @@ export default class App extends Component {
     });
   };
 
-  onHandleFilter = (e) => {
-    this.setState({ filter: e.target.value });
+  // onHandleFilter = (e) => {
+  //   console.log(e.target.value);
+  //   this.setState({ filter: e.target.value });
+  // };
+  onHandleFilter = (value) => {
+    console.log(value);
+    this.setState({ filter: value });
   };
 
   getFilteredContact = () => {
     const { contacts, filter } = this.state;
-    return [
-      contacts.filter((contact) =>
-        contact.name.toLowerCase().includes(filter.toLowerCase())
-      ),
-    ];
+    return contacts.filter((item) =>
+      item.name.toLowerCase().includes(filter.toLowerCase())
+    );
   };
 
   render() {
     const { filter } = this.state;
-    // const getFilteredContact = this.getFilteredContact();
+    const getFilteredContact = this.getFilteredContact();
     return (
       <div>
         <h1>Phonebook</h1>
@@ -66,8 +69,7 @@ export default class App extends Component {
         <Filter filter={filter} onHandleFilter={this.onHandleFilter} />
 
         <ContactList
-          // contacts={getFilteredContact} // помилка!!!
-          contacts={this.state.contacts}
+          contacts={getFilteredContact}
           deleteContact={this.deleteContact}
         />
       </div>
