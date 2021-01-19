@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from "./App.module.css";
 import { v4 as uuidv4 } from "uuid";
 import ContactForm from "./contactForm/ContactForm";
 import ContactList from "./contactList/ContactList";
@@ -61,10 +62,10 @@ export default class App extends Component {
     const { filter } = this.state;
     const getFilteredContact = this.getFilteredContact();
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <div className={styles.wrapper}>
+        <h1 className={styles.titlePhonebook}>Phonebook</h1>
         <ContactForm addContact={this.addContact} />
-        <h2>Contacts</h2>
+        <h2 className={styles.titleContacts}>Contacts</h2>
 
         <Filter filter={filter} onHandleFilter={this.onHandleFilter} />
 

@@ -14,7 +14,7 @@ const Filter = ({ filter, onHandleFilter }) => {
         type="text"
         name="filter"
         value={filter}
-        placeholder="Filter contact"
+        placeholder="Filter Name"
         onChange={onFilterChange}
       ></input>
     </div>

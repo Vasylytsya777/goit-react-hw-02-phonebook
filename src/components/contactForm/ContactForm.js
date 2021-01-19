@@ -29,11 +29,7 @@ export default class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form
-        className={styles.form}
-        onSubmit={this.onHandleSubmit}
-        style={{ display: "flex" }}
-      >
+      <form className={styles.form} onSubmit={this.onHandleSubmit} s>
         <label className={styles.label}>
           Name
           <input

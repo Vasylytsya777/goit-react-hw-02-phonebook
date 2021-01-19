@@ -4,10 +4,10 @@ import styles from "./ContactList.module.css";
 
 const ContactList = ({ contacts, deleteContact }) => {
   return (
-    <ul>
+    <ul className={styles.list}>
       {contacts.map((item) => (
         <li className={styles.listItem} key={item.id}>
-          <h3> {item.name}</h3>
+          <h3>{item.name}:</h3>
           <p className={styles.contactText}>{item.number}</p>
           <button
             className={styles.deleteButton}

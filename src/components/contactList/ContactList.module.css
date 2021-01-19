@@ -1,21 +1,31 @@
+.wrapper {
+  margin-bottom: 20px;
+}
+.list {
+  padding-left: 400px;
+}
 .listItem {
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 .contactText {
   display: inline-block;
-  margin-right: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
   font-size: 20px;
 }
 .deleteButton {
   width: 100px;
   height: 30px;
 
-  border: none;
+  border: 1px solid black;
   cursor: pointer;
   font-size: 20px;
-  background-color: green;
+  background-color: white;
 }
 .deleteButton:hover,
 .deleteButton:focus {
-  background-color: red;
+  border: 2px solid grey;
+  box-shadow: 1px 1px 10px 1px grey;
 }
